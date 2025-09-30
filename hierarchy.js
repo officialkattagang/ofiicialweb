@@ -2,7 +2,7 @@
 const gangMembers = {
     leader: {
         photo: 'https://i.imgur.com/example-leader.jpg', // Replace with actual path
-        name: 'Salvatore "The Boss" Marino',
+        name: 'Vaibhav "Donali',
         post: 'Gang Leader'
     },
     viceLeader1: {
@@ -91,4 +91,5 @@ idCardOverlay.addEventListener('click', (event) => {
     if (event.target === idCardOverlay) {
         closeIdCard();
     }
+
 });
