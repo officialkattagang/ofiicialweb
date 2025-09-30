@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KATTA GANG Hierarchy</title>
+    <link rel="stylesheet" href="hierarchy.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="smoke-effect"></div> <header class="main-header">
+        <h1 class="main-title">KATTA GANG Hierarchy</h1>
+    </header>
+
+    <main class="hierarchy-container">
+        <div class="rank-section leader-rank">
+            <h2>Gang Leader</h2>
+            <div class="member-card" data-member="leader">
+                <span class="member-name">Boss Man</span>
+            </div>
+        </div>
+
+        <div class="rank-section vice-rank">
+            <h2>Vice Gang Leader</h2>
+            <div class="member-card" data-member="viceLeader1">
+                <span class="member-name">Shadow Hand</span>
+            </div>
+            <div class="member-card" data-member="viceLeader2">
+                <span class="member-name">Night Owl</span>
+            </div>
+        </div>
+
+        <div class="rank-section secretary-rank">
+            <h2>Secretary</h2>
+            <div class="member-card" data-member="secretary">
+                <span class="member-name">The Scribe</span>
+            </div>
+        </div>
+
+        <div class="rank-section developer-rank">
+            <h2>Website Developer</h2>
+            <div class="member-card" data-member="developer">
+                <span class="member-name">Code Enforcer</span>
+            </div>
+        </div>
+
+        <div class="rank-section content-rank">
+            <h2>Content Creator</h2>
+            <div class="member-card" data-member="contentCreator1">
+                <span class="member-name">Street Storyteller</span>
+            </div>
+             <div class="member-card" data-member="contentCreator2">
+                <span class="member-name">Neon Narrator</span>
+            </div>
+        </div>
+
+        <div class="rank-section members-rank">
+            <h2>Members</h2>
+            <div class="member-card" data-member="member1">
+                <span class="member-name">Street Viper</span>
+            </div>
+            <div class="member-card" data-member="member2">
+                <span class="member-name">Urban Hunter</span>
+            </div>
+            <div class="member-card" data-member="member3">
+                <span class="member-name">Dark Archer</span>
+            </div>
+            </div>
+    </main>
+
+    <div class="id-card-overlay" id="idCardOverlay">
+        <div class="id-card-popup" id="idCardPopup">
+            <button class="close-btn" id="closeIdCard">&times;</button>
+            <div class="id-card-header">
+                <img id="memberPhoto" src="" alt="Member Photo" class="member-photo">
+                <h3 id="memberGangName" class="gang-name">KATTA GANG</h3>
+            </div>
+            <div class="id-card-body">
+                <p><strong>Name:</strong> <span id="memberNameDisplay"></span></p>
+                <p><strong>Post:</strong> <span id="memberPostDisplay"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="hierarchy.js"></script>
+</body>
+</html>

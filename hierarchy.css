@@ -1,0 +1,305 @@
+/* --- General Body & Background --- */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Oswald', sans-serif;
+    background-image: url('https://i.imgur.com/g823j3g.jpeg'); /* Use your dark alley background */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #e0e0e0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px; /* Space for potential footer or just bottom margin */
+}
+
+/* Dark overlay for readability */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    z-index: 0;
+}
+
+/* Subtle Smoke Effect (CSS only, can be enhanced with images) */
+.smoke-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; /* Above background, below content */
+    opacity: 0.3; /* Subtle */
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(57,255,20,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220,20,60,0.15) 0%, transparent 50%);
+    animation: subtle-glow 10s infinite alternate;
+}
+
+@keyframes subtle-glow {
+    from { opacity: 0.3; transform: scale(1); }
+    to { opacity: 0.45; transform: scale(1.05); }
+}
+
+/* --- Header --- */
+.main-header {
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.main-title {
+    font-family: 'Rye', serif;
+    font-size: 4rem;
+    color: #39ff14; /* Neon Green */
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 
+        0 0 8px #39ff14, 
+        0 0 20px #39ff14, 
+        0 0 40px #00ff00;
+    animation: text-flicker 3s infinite alternate;
+    margin: 0;
+}
+
+/* --- Hierarchy Container --- */
+.hierarchy-container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 30px;
+}
+
+.rank-section {
+    background: rgba(15, 15, 15, 0.85);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.4), inset 0 0 5px rgba(220, 20, 60, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.rank-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.6), inset 0 0 8px rgba(220, 20, 60, 0.3);
+}
+
+.rank-section h2 {
+    font-family: 'Rye', serif;
+    font-size: 1.8rem;
+    color: #dc143c; /* Neon Crimson */
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #dc143c, 0 0 15px #dc143c;
+    animation: rank-flicker 5s infinite alternate;
+}
+
+/* Specific rank highlights */
+.leader-rank h2 { color: #39ff14; text-shadow: 0 0 8px #39ff14, 0 0 20px #39ff14; }
+
+/* --- Member Card Styles --- */
+.member-card {
+    background: rgba(25, 25, 25, 0.9);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: inline-block; /* Allows proper centering and sizing within parent */
+    width: fit-content;
+    max-width: 80%; /* Prevent it from being too wide on small screens */
+    margin: 10px auto; /* Centers the block elements */
+}
+
+.member-card:hover {
+    background: rgba(40, 40, 40, 0.95);
+    border-color: #39ff14;
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.5), inset 0 0 6px rgba(57, 255, 20, 0.3);
+}
+
+.member-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #39ff14; /* Neon Green */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 3px #39ff14;
+}
+
+/* --- ID Card Popup --- */
+.id-card-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 100; /* On top of everything */
+    justify-content: center;
+    align-items: center;
+}
+
+.id-card-popup {
+    background: rgba(10, 10, 10, 0.95);
+    border: 2px solid #dc143c;
+    border-radius: 15px;
+    padding: 30px;
+    width: 350px;
+    max-width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.7), 0 0 50px rgba(0, 0, 0, 0.8);
+    animation: id-card-appear 0.4s ease-out forwards;
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #dc143c;
+    font-size: 2.5rem;
+    cursor: pointer;
+    text-shadow: 0 0 8px #dc143c;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff0000;
+    text-shadow: 0 0 15px #ff0000;
+}
+
+.id-card-header {
+    margin-bottom: 20px;
+}
+
+.member-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #39ff14;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+    margin-bottom: 15px;
+}
+
+.gang-name {
+    font-family: 'Rye', serif;
+    font-size: 2rem;
+    color: #39ff14;
+    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+    margin: 0;
+}
+
+.id-card-body p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #ccc;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.id-card-body strong {
+    color: #dc143c;
+    text-shadow: 0 0 2px #dc143c;
+}
+
+.id-card-body span {
+    color: #e0e0e0;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes text-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 8px #39ff14, 
+            0 0 20px #39ff14, 
+            0 0 40px #00ff00;
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+        opacity: 0.85;
+    }
+}
+
+@keyframes rank-flicker {
+    0%, 30%, 34%, 38%, 70%, 74%, 100% {
+        text-shadow: 0 0 5px #dc143c, 0 0 15px #dc143c;
+    }
+    32%, 36%, 72% {
+        text-shadow: none;
+    }
+}
+
+@keyframes id-card-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    .hierarchy-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .rank-section {
+        padding: 20px;
+    }
+    .rank-section h2 {
+        font-size: 1.5rem;
+    }
+    .member-name {
+        font-size: 1.1rem;
+    }
+    .id-card-popup {
+        width: 95%;
+        padding: 20px;
+    }
+    .member-photo {
+        width: 100px;
+        height: 100px;
+    }
+    .gang-name {
+        font-size: 1.5rem;
+    }
+    .id-card-body p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+}

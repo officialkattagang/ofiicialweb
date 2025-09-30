@@ -1,0 +1,243 @@
+/* --- Basic Setup & Background --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: sans-serif;
+    background-image: url('background.jpg'); /* <-- REPLACE THIS */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    overflow: hidden; /* Hide scrollbars and anything that overflows */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dark overlay to make text pop */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* --- Main Content --- */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.main-title {
+    font-family: 'Rye', serif;
+    font-size: 6rem;
+    color: #39ff14; /* Neon Green */
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 
+        0 0 5px #39ff14, 
+        0 0 15px #39ff14, 
+        0 0 30px #39ff14, 
+        0 0 50px #00ff00;
+    animation: text-flicker 3s infinite alternate;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 3rem;
+    filter: drop-shadow(0 0 15px #dc143c); /* Neon Crimson Glow */
+}
+
+/* --- Pistols --- */
+.pistol {
+    position: absolute;
+    width: 150px;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: drop-shadow(0 0 8px #2a3439);
+    animation: gun-float 5s ease-in-out infinite;
+}
+
+.pistol-left {
+    left: -180px;
+    transform: translateY(-50%) rotate(-30deg);
+}
+
+.pistol-right {
+    right: -180px;
+    transform: translateY(-50%) rotate(30deg) scaleX(-1); /* Flipped */
+}
+
+/* --- Button --- */
+.enter-btn {
+    text-decoration: none;
+    color: #dc143c; /* Neon Crimson */
+    background-color: transparent;
+    border: 2px solid #dc143c;
+    padding: 1rem 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    box-shadow: 
+        0 0 5px #dc143c, 
+        0 0 10px #dc143c, 
+        inset 0 0 5px #dc143c;
+    transition: all 0.3s ease-in-out;
+}
+
+.enter-btn:hover {
+    background-color: #dc143c;
+    color: #000;
+    box-shadow: 
+        0 0 10px #dc143c, 
+        0 0 40px #dc143c, 
+        0 0 80px #dc143c,
+        inset 0 0 10px #000;
+}
+
+/* --- Smoke Effect --- */
+.smoke-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none; /* Allows clicking through the smoke */
+}
+
+.smoke {
+    position: absolute;
+    bottom: -100px;
+    opacity: 0;
+    width: 250px;
+    animation: smoke-drift 15s linear infinite;
+}
+
+.smoke1 {
+    left: 10%;
+    animation-delay: 0s;
+    width: 200px;
+}
+
+.smoke2 {
+    left: 60%;
+    animation-delay: 5s;
+    width: 300px;
+}
+
+.smoke3 {
+    left: 30%;
+    animation-delay: 10s;
+    width: 250px;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes text-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 5px #39ff14, 
+            0 0 15px #39ff14, 
+            0 0 30px #39ff14, 
+            0 0 50px #00ff00;
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+        opacity: 0.8;
+    }
+}
+
+@keyframes gun-float {
+    0% {
+        transform: translateY(-50%) rotate(-30deg) ;
+    }
+    50% {
+        transform: translateY(-60%) rotate(-25deg);
+    }
+    100% {
+        transform: translateY(-50%) rotate(-30deg);
+    }
+}
+
+.pistol-right {
+    animation-name: gun-float-right; /* Separate animation for the right gun */
+}
+
+@keyframes gun-float-right {
+    0% {
+        transform: translateY(-50%) rotate(30deg) scaleX(-1);
+    }
+    50% {
+        transform: translateY(-60%) rotate(25deg) scaleX(-1);
+    }
+    100% {
+        transform: translateY(-50%) rotate(30deg) scaleX(-1);
+    }
+}
+
+@keyframes smoke-drift {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.4;
+    }
+    75% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateX(-50px) translateY(-50vh) scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* --- Responsive Design for Smaller Screens --- */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3rem;
+    }
+
+    .pistol {
+        width: 80px;
+    }
+
+    .pistol-left {
+        left: -80px;
+    }
+
+    .pistol-right {
+        right: -80px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .enter-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts for themed text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link to the stylesheet -->
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- Smoke Animation Elements -->
+    <div class="smoke-container">
+        <!-- You can use a real smoke image here if you have one -->
+    </div>
+
+    <!-- Sign Up Container -->
+    <div class="container" id="signUp" style="display: none;">
+        <h1 class="form-title">Register</h1>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="4f575481-2523-4eb0-a1a4-d5f79c58d15f">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="fname" id="fname" placeholder="Gang Name" required>
+                <label for="fname">Gang Name</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="lname" id="lname" placeholder="Gang Position" required>
+                <label for="lname">Gang Position</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="name" id="password" placeholder="Password" required>
+                <label for="password">Password</label>
+            </div>
+            <input type="submit" class="btn" value="Sign Up" name="signup">
+        </form>
+        <div class="links">
+            <p>Already Have Account ?</p>
+            <button id="signInButton">Sign In</button>
+        </div>
+    </div>
+
+    <!-- Sign In Container -->
+    <div class="container" id="signIn">
+        <h1 class="form-title">Sign In</h1>
+        <form method="post" action="">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email-signin" placeholder="Email" required>
+                <label for="email-signin">Email</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password-signin" placeholder="Password" required>
+                <label for="password-signin">Password</label>
+            </div>
+            <p class="recover">
+                <!-- <a href="#">Recover Password</a> -->
+            </p>
+            <input type="submit" class="btn" value="Sign In" name="signIn">
+        </form>
+        <div class="links">
+            <p>Don't Have Account Yet?</p>
+            <button id="signUpButton">Sign Up</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
