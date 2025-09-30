@@ -4,7 +4,7 @@
 // Key = email, value = object with password and optional display name.
 // Add / edit entries here to test multiple users.
 const credentials = {
-    "aman@example.comneha@exa": { password: "000000", name: "Aman" },
+    "vaibhavguptaa9956@gmail.com": { password: "blue@sky1", name: "Vaibhav" },
     "rudra@gmail.com": { password: "000000", name: "Neha" },
     "kesarwanitarun904@gmail.com": { password: "777777", name: "Tarun" },
     "ghungroo@gmail.com": { password: "ghungroo", name: "Prashant" }
@@ -68,3 +68,4 @@ if (signInBtn) {
         if (signInContainer) signInContainer.style.display = 'block';
     });
 }
+
